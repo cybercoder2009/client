@@ -1,21 +1,7 @@
 const WebSocket = require('ws');
 const BigNumber = require('./lib/bignumber.js')
 
-function prefix_remove(hex){
-	if (typeof hex === 'string' && hex.indexOf('0x') >= 0) {
-		if(hex.length == 2)
-			return ''
-		else 
-			return hex.substr(2, hex.length -1) 
-	} 
-	return hex
-}
 
-function prefix_prepend(hex) {
-	if (hex.indexOf('0x') < 0)
-		hex = '0x' + hex
-	return hex
-}
 
 function to_aion(hex){
 	hex = prefix_remove(hex)
@@ -68,8 +54,7 @@ function sign(tx,account){
 }
 
 module.exports = {
-	prefix_remove: prefix_remove,
-	prefix_prepend: prefix_prepend,
 	to_aion: to_aion,
-	random: random,  
+	prefix_remove: prefix_remove,
+	prefix_prepend: prefix_prepend  
 }
