@@ -1,5 +1,5 @@
 1. Create new account
-@return
+
 ```
  @return 
  Account {
@@ -17,9 +17,9 @@ let account = create()
 ```
 
 2. Generate account from private key
+```
 @params private_key Buffer
 @return 
-```
 Account {
      private_key,      // Buffer
      private_key_hex,  // string
