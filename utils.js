@@ -1,8 +1,6 @@
 const WebSocket = require('ws');
 const BigNumber = require('./lib/bignumber.js')
 
-
-
 function to_aion(hex){
 	hex = prefix_remove(hex)
 	let bn = new BigNumber(hex)
