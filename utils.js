@@ -1,12 +1,12 @@
 const WebSocket = require('ws');
-const BigNumber = require('./lib/bignumber.js')
+// const BigNumber = require('./lib/bignumber.js')
 
-function to_aion(hex){
-	hex = prefix_remove(hex)
-	let bn = new BigNumber(hex)
-	let decimal = new BigNumber(10^18)
-	return bn
-}
+// function to_aion(hex){
+// 	hex = prefix_remove(hex)
+// 	let bn = new BigNumber(hex)
+// 	let decimal = new BigNumber(10^18)
+// 	return bn
+// }
 
 function random(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
@@ -52,7 +52,7 @@ function sign(tx,account){
 }
 
 module.exports = {
-	to_aion: to_aion,
-	prefix_remove: prefix_remove,
-	prefix_prepend: prefix_prepend  
+	//to_aion: to_aion,
+	random,
+	sign
 }

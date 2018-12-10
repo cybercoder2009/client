@@ -18,10 +18,11 @@ const ws = new WebSocket('ws://' + host + ':' + port, {
   	perMessageDeflate: false
 })
 
-ws.on('open',()=>{
+ws.on('open',() => {
+	console.log('[connect-success]')
 
 	// prepare data
-	accounts.forEach((account, index)=>{
+	accounts.forEach((account, index) => {
 		account.nonce_check = NONCE_NOT_SENT
 		account.nonce = 0
 	})
@@ -31,6 +32,7 @@ ws.on('open',()=>{
 		let nonce_update_done = true
 		let updated_accounts = 0
 		accounts.forEach((account, index)=>{
+			console.log(account.nonce)
 			switch (account.nonce) {
 				case NONCE_NOT_SENT:
 					account.nonce_check = NONCE_SENT
@@ -39,6 +41,7 @@ ws.on('open',()=>{
 						label: TASK_UPDATE_NONCE,
 						account: account
 					}
+					console.log('sending')
 					ws.send(JSON.stringify({
 						id: id,
 						jsonrpc: '2.0',
@@ -51,6 +54,8 @@ ws.on('open',()=>{
 				case NONCE_UPDATED:
 					updated_accounts++
 				break;
+				default:
+				break;
 			}
 		})
 		// console.log('updated_accounts ' + updated_accounts)
@@ -58,9 +63,9 @@ ws.on('open',()=>{
 		// 	console.log('[all-accounts-nonce-updated]')
 		// 	clearInterval(nonce_check)
 		// }
-	},loop_interval)
+	}, loop_interval)
 });
-ws.on('message', (data)=>{
+ws.on('message', (data) => {
 	console.log('message ' + data)
 	let json = JSON.parse(data)
 	let task = tasks[json.id]
