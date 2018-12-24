@@ -10,10 +10,14 @@
      address,          // string
  }
 ```
-usage:
+code:
 ```
 const { create } = require('./keypair.js')
 let account = create()
+```
+example:
+```
+node account.js
 ```
 
 2. Generate account from private key
@@ -28,7 +32,7 @@ Account {
      address,          // string
 }
 ```
-usage:
+code:
 ```
 const { to_buffer } = require('./utils.js')
 const { create } = require('./keypair.js')
